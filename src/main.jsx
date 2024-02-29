@@ -4,12 +4,11 @@ import './scss/styles.scss'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import axios from 'axios'
 import App from './App'
 
 import { Toaster } from 'sonner'
 
-axios.defaults.baseURL = 'http://localhost:3000/'
+// axios.defaults.baseURL = 'http://localhost:3000/'
 
 // prettier-ignore
 ReactDOM

@@ -1,17 +1,47 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { Outlet, createBrowserRouter } from 'react-router-dom'
 
 // Pages
 import Root from '../pages/Root'
 import Generator from '../pages/Generator'
+import Home from './Home'
+import Register from '../pages/Register'
+import Login from '../pages/Login'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />
+    element: <Root />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/generate',
+        element: <Generator />
+      }
+    ]
   },
   {
-    path: '/generate',
-    element: <Generator />
+    path: '/auth',
+    element: (
+      <div
+        className="min-vh-100 d-flex flex-column align-items-center justify-content-center text-light"
+        style={{ background: '#0a0a0a' }}
+      >
+        <Outlet />
+      </div>
+    ),
+    children: [
+      {
+        path: '/auth/login',
+        element: <Login />
+      },
+      {
+        path: '/auth/register',
+        element: <Register />
+      }
+    ]
   }
 ])
 

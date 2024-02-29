@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon server/main.js -w server",
+    "client": "vite",
     "start": "cross-env NODE_ENV=production node server/main.js",
     "build": "vite build"
   },
@@ -20,6 +21,7 @@
     "nanoid": "^5.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-qr-code": "^2.0.12",
     "react-router-dom": "^6.22.1",
     "sonner": "^1.4.1",
     "vite-express": "^0.15.0"
