@@ -61,6 +61,7 @@ const Generator = () => {
 
   return (
     <>
+      <h1 className="display-2 fw-semibold mb-5">QRCode Generator 🧬</h1>
       <form
         onSubmit={onSubmitHandler}
         className="w-100 container"

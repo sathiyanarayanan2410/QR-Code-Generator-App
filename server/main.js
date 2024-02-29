@@ -3,10 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import ViteExpress from 'vite-express'
 import mongoose from 'mongoose'
-import User from './models/User.js'
 import Url from './models/Url.js'
-import jwt from 'jsonwebtoken'
-import { nanoid } from 'nanoid'
 
 // Routes
 import authRouter from './api/auth.js'

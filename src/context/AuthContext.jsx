@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false)
         setUser(null)
       })
-  }, [])
+  }, [isAuthenticated])
 
   // Value to be provided
   const value = {

@@ -15,13 +15,9 @@ const router = Router()
 export function authMiddleware(req, res, next) {
   const token = req.headers['authorization']
 
-  console.log(token)
-
   if (!token) {
     return res.status(401).send({ error: true, message: 'Token not recieved' })
   }
-
-  console.log(process.env.JWT_SECRET)
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
@@ -73,7 +69,7 @@ router.put('/shorturl/:id', async (req, res) => {
 })
 
 // Delete the shorturl URL
-router.delete('/api/shorturl/:id', async (req, res) => {
+router.delete('/shorturl/:id', async (req, res) => {
   try {
     const deleteUrl = await Url.deleteOne({ short_url: req.params.id })
     if (!deleteUrl.n) {
@@ -88,6 +84,12 @@ router.delete('/api/shorturl/:id', async (req, res) => {
       message: 'An error occurred while deleting the URL.'
     })
   }
+})
+
+// Get all the user QRCodes
+router.get('/user/qrcodes', authMiddleware, async (req, res) => {
+  const qrcodes = await Url.find({ user: req.userId })
+  res.send(qrcodes)
 })
 
 export default router

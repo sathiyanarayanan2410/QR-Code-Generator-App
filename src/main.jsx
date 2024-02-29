@@ -5,10 +5,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import App from './App'
+import axios from 'axios'
 
 import { Toaster } from 'sonner'
 
-// axios.defaults.baseURL = 'http://localhost:3000/'
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
 
 // prettier-ignore
 ReactDOM
