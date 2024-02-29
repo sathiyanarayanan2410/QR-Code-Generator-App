@@ -12,6 +12,7 @@ What things you need to install the software and how to install them:
 
 - Node.js
 - npm
+- git
 
 ### 🔧 Installation
 
@@ -32,9 +33,8 @@ npm install
 
 ```properties
 PORT=3000
-MONOGO_URI=http://localhost:27017/qrcode
+MONOGO_URI=mongodb://localhost:27017/qrcode
 JWT_SECRET=your_secret
-SESSION_SECRET=your_secret
 ```
 
 4. Start the server
@@ -47,13 +47,15 @@ npm run dev
 
 ## 🎈 Usage
 
-To generate a QR Code, simply enter the text or URL in the input field and click on the 'Generate' button. The QR Code will be displayed below.
+- Create an account and login to the application.
+
+- To generate a QR Code, simply enter the text or URL in the input field and click on the 'Generate' button. The QR Code will be displayed below.
 
 ## 🛠️ Built With
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 - [Express.js](https://expressjs.com/) - A web application framework for Node.js
-- [qrcode](https://www.npmjs.com/package/qrcode) - A QR code generator for JavaScript
+- [react-qr-code](https://www.npmjs.com/package/react-qr-code) - A React QR code generator for JavaScript
 
 ## ✍️ Authors
 
