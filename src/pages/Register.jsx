@@ -2,13 +2,14 @@ import axios from 'axios'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import { useAuth } from '../context/AuthContext'
 
 const Register = () => {
   const navigate = useNavigate()
 
   const { isAuthenticated } = useAuth()
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isAuthenticated) {
       toast.success('You are already logged in')
       navigate('/')

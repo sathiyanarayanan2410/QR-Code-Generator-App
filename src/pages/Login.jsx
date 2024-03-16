@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext'
 
 const Login = () => {
   const navigate = useNavigate()
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, setIsAuthenticated, setUser } = useAuth()
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -30,6 +30,8 @@ const Login = () => {
       .then((res) => {
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('user', JSON.stringify(res.data))
+        setIsAuthenticated(true)
+        setUser(res.data)
         toast.success('Login successful')
         navigate('/')
       })

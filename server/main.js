@@ -3,10 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import ViteExpress from 'vite-express'
 import mongoose from 'mongoose'
-import User from './models/User.js'
 import Url from './models/Url.js'
-import jwt from 'jsonwebtoken'
-import { nanoid } from 'nanoid'
 
 // Routes
 import authRouter from './api/auth.js'
@@ -28,8 +25,11 @@ mongoose
 app.get('/r/:id', async (req, res) => {
   const fullurl = await Url.findOne({ short_url: req.params.id })
 
-  if (fullurl) res.redirect(fullurl.full_url)
-  else res.status(404).send({ error: true, message: 'URL not found' })
+  if (fullurl) {
+    fullurl.no_of_scans++
+    fullurl.save()
+    res.redirect(fullurl.full_url)
+  } else res.status(404).send({ error: true, message: 'URL not found' })
 })
 
 app.use('/api', apiRouter)

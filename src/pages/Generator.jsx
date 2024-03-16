@@ -1,11 +1,23 @@
 import React from 'react'
 import axios from 'axios'
 import QRCode from 'react-qr-code'
+import { toast } from 'sonner'
+import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const Generator = () => {
   const [url, setUrl] = React.useState('')
   const [shortUrl, setShortUrl] = React.useState('')
+
+  const { isAuthenticated } = useAuth()
   const qrcodeRef = React.useRef(null)
+  const navigator = useNavigate()
+
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      navigator('/auth/login')
+    }
+  }, [])
 
   const generateShortUrl = `${location.origin}/r/${shortUrl}`
 
@@ -56,11 +68,12 @@ const Generator = () => {
       .then((res) => {
         setShortUrl(res.data.short_url)
       })
-      .catch((error) => console.error(error.message))
+      .catch((error) => toast.error(error.response.data.message))
   }
 
   return (
     <>
+      <h1 className="display-2 fw-semibold mb-5">QRCode Generator 🧬</h1>
       <form
         onSubmit={onSubmitHandler}
         className="w-100 container"

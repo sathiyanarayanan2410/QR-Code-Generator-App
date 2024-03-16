@@ -6,6 +6,8 @@ import Generator from '../pages/Generator'
 import Home from './Home'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
+import MyQrcode from '../pages/MyQrcode'
+import Analytics from '../pages/Analytics'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
       {
         path: '/generate',
         element: <Generator />
+      },
+      {
+        path: '/qrcode',
+        element: <MyQrcode />
+      },
+      {
+        path: '/qrcode/:id',
+        element: <Analytics />
       }
     ]
   },
