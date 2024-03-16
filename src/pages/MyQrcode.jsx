@@ -6,12 +6,14 @@ import { PenLine, Trash2, LineChart } from 'lucide-react'
 import MyVerticallyCenteredModal from '../components/Model'
 import { Button } from 'react-bootstrap'
 import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 const baseurl = window.location.origin
 const MyQrcode = () => {
   const [data, setData] = React.useState([])
   const [modalShow, setModalShow] = React.useState(false)
   const [urlData, setUrlData] = React.useState({})
+  const navigator = useNavigate()
 
   React.useEffect(() => {
     axios
